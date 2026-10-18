@@ -2,3 +2,4 @@ android
 web
 .claude
 *.md
+.env*
