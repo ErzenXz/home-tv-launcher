@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Home</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="stage" class="booting">
+  <!-- Top shelf backdrop: two layers that crossfade -->
+  <div id="backdrop">
+    <div class="hero-layer"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+    <div class="hero-layer"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+    <div class="grain"></div>
+    <div class="vignette"></div>
+    <div class="shade"></div>
+  </div>
+
+  <div id="status">
+    <div id="weather" hidden></div>
+    <div id="clock">--:--</div>
+  </div>
+
+  <section id="shelf" aria-live="polite">
+    <div id="shelf-kicker"></div>
+    <h1 id="shelf-title"></h1>
+    <p id="shelf-tagline"></p>
+    <div id="shelf-hint"><span class="key">OK</span> Open <span class="dot"></span> <span class="key">Hold OK</span> Edit <span class="dot"></span> <span class="key">Menu</span> Settings</div>
+  </section>
+
+  <main id="grid" role="grid" aria-label="Apps"></main>
+
+  <!-- Context menu -->
+  <div id="menu" class="overlay" hidden>
+    <div class="panel menu-panel">
+      <div class="menu-head"><div id="menu-icon" class="mini-tile"></div><div id="menu-title"></div></div>
+      <div id="menu-items" class="list"></div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div id="settings" class="overlay side" hidden>
+    <div class="panel settings-panel">
+      <h2>Settings</h2>
+      <div id="settings-items" class="list"></div>
+      <div class="foot">Use ◀ ▶ to change · OK to select · Back to close</div>
+    </div>
+  </div>
+
+  <!-- Add / edit app form -->
+  <div id="form" class="overlay" hidden>
+    <div class="panel form-panel">
+      <h2 id="form-title">Add App</h2>
+      <div class="form-preview"><div id="form-tile" class="tile static"><div class="tile-face"></div></div></div>
+      <label class="field nav" data-k="name"><span>Name</span><input id="f-name" autocomplete="off" spellcheck="false" placeholder="My App"></label>
+      <label class="field nav" data-k="url"><span>Address</span><input id="f-url" autocomplete="off" spellcheck="false" placeholder="https://"></label>
+      <div class="field nav" data-k="color"><span>Color</span><div id="f-colors" class="swatches"></div></div>
+      <div class="buttons">
+        <button class="btn nav primary" data-k="save">Save</button>
+        <button class="btn nav" data-k="cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Screensaver -->
+  <div id="saver" hidden>
+    <div class="saver-art"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div></div>
+    <div class="saver-clock"><div id="saver-time"></div><div id="saver-date"></div></div>
+  </div>
+
+  <div id="toast" hidden></div>
+</div>
+
+<!-- Launch zoom effect lives outside the stage scale so it can cover the real viewport -->
+<div id="launch"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

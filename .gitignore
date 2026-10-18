@@ -1,0 +1,11 @@
+.DS_Store
+.vercel
+.claude/
+# Android
+android/.gradle/
+android/build/
+android/app/build/
+android/.kotlin/
+android/local.properties
+android/.idea/
+*.iml
